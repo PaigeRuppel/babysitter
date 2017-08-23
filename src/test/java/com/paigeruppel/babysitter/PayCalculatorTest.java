@@ -71,6 +71,7 @@ public class PayCalculatorTest {
 		assertThat(createTest(0, 0, 18).isValidEnd(), is(true));
 	}
 	
+	// calculate pay from start to bed
 	@Test
 	public void shouldReturn24DollarsFromStart6PmToBed8Pm() {
 		assertThat(createTest(18,20,0).calculatePayFromStartToBed(), is(24));
@@ -86,6 +87,7 @@ public class PayCalculatorTest {
 		assertThat(createTest(17, 21, 0).calculatePayFromStartToBed(), is(48));
 	}
 	
+	// calculate pay from bed to midnight
 	@Test
 	public void shouldReturn32DollarsFromBed8PmToMidnight() {
 		assertThat(createTest(17,20,0).calculatePayFromBedToMidnight(), is(32));
@@ -101,6 +103,7 @@ public class PayCalculatorTest {
 		assertThat(createTest(17,21,0).calculatePayFromBedToMidnight(), is(24));
 	}
 	
+	// calculate pay from midnight to end (if end is after midnight)
 	@Test
 	public void shouldReturn16DollarsFromMidnightToEnd1Am() {
 		assertThat(createTest(17,20,1).calculatePayFromMidnightToEnd(),is(16));
@@ -109,6 +112,13 @@ public class PayCalculatorTest {
 	@Test
 	public void shouldReturn32DollarsFromMidnightToEnd2Am() {
 		assertThat(createTest(17,20,2).calculatePayFromMidnightToEnd(),is(32));
+	}
+	
+	
+	// calculate pay from bedtime to end if end is before midnight
+	@Test
+	public void shouldReturn24DollarsFromBed8PmToEndAt11Pm() {
+		assertThat(createTest(17, 20, 23).calculatePayFromBedToEndBeforeMidnight(), is (24));
 	}
 
 }
