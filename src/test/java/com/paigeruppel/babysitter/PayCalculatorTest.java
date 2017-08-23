@@ -7,59 +7,64 @@ import org.junit.Test;
 
 public class PayCalculatorTest {
 
-	
 	@Test
 	public void shouldReturn5PmAsValidStartTime() {
 		PayCalculator underTest = new PayCalculator();
 		assertThat(underTest.isValidStart(17), is(true));
 	}
-	
+
 	@Test
 	public void shouldReturn4PmAsNotValidStartTime() {
 		PayCalculator underTest = new PayCalculator();
 		assertThat(underTest.isValidStart(16), is(false));
 	}
-	
+
 	@Test
 	public void shouldReturn6PmAsValidStartTime() {
 		PayCalculator underTest = new PayCalculator();
 		assertThat(underTest.isValidStart(18), is(true));
 	}
-	
+
+	@Test
+	public void shouldReturnMidnightAsValidStartTime() {
+		PayCalculator underTest = new PayCalculator();
+		assertThat(underTest.isValidStart(0), is(true));
+	}
+
 	@Test
 	public void shouldReturn4AmAsValidEndTime() {
 		PayCalculator underTest = new PayCalculator();
 		assertThat(underTest.isValidEnd(4), is(true));
 	}
-	
+
 	@Test
 	public void shouldReturn5AmAsNotValidEndTime() {
 		PayCalculator underTest = new PayCalculator();
 		assertThat(underTest.isValidEnd(5), is(false));
 	}
+
 	@Test
 	public void shouldReturn3AmAsValidEndTime() {
 		PayCalculator underTest = new PayCalculator();
 		assertThat(underTest.isValidEnd(3), is(true));
 	}
-	
+
 	@Test
 	public void shouldReturnMidnightAsValidEndTime() {
 		PayCalculator underTest = new PayCalculator();
 		assertThat(underTest.isValidEnd(0), is(true));
 	}
-	
+
 	@Test
 	public void shouldReturn11PmAsValidEndTime() {
 		PayCalculator underTest = new PayCalculator();
 		assertThat(underTest.isValidEnd(23), is(true));
 	}
-	
+
 	@Test
 	public void shouldReturn6PmAsValidEndTime() {
 		PayCalculator underTest = new PayCalculator();
 		assertThat(underTest.isValidEnd(18), is(true));
 	}
-	
 
 }
