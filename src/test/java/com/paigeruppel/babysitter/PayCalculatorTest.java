@@ -75,5 +75,15 @@ public class PayCalculatorTest {
 	public void shouldReturn24DollarsFromStart6PmToBed8Pm() {
 		assertThat(createTest(18,20,0).calculatePayFromStartToBed(), is(24));
 	}
+	
+	@Test
+	public void shouldReturn36DollarsFromStart5PmToBed8Pm() {
+		assertThat(createTest(17,20,0).calculatePayFromStartToBed(), is(36));
+	}
+	
+	@Test
+	public void shouldReturn48DollarsFromStart5PmToBed9Pm() {
+		assertThat(createTest(17, 21, 0).calculatePayFromStartToBed(), is(48));
+	}
 
 }

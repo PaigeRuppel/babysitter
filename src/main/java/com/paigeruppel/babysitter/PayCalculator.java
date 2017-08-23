@@ -22,7 +22,7 @@ public class PayCalculator {
 	}
 
 	public int calculatePayFromStartToBed() {
-		return 24;
+		return (bed - start) * 12;
 	}
 
 }
