@@ -12,7 +12,6 @@ public class PayCalculator {
 		this.end = end;
 	}
 
-
 	public boolean isValidStart() {
 		return start >= 17 || start <= 3;
 	}
@@ -20,8 +19,15 @@ public class PayCalculator {
 	public boolean isValidEnd() {
 		return end <= 4 || end >= 18;
 	}
+
 	public int calculateTotalPay() {
-		return calculatePayFromStartToBed() + calculatePayFromBedToMidnight() + calculatePayFromMidnightToEnd();
+		int totalPay = 0;
+		if (end < 4) {
+			totalPay = calculatePayFromStartToBed() + calculatePayFromBedToMidnight() + calculatePayFromMidnightToEnd();
+		} else {
+			totalPay = calculatePayFromStartToBed() + calculatePayFromBedToEndBeforeMidnight();
+		}
+		return totalPay;
 	}
 
 	public int calculatePayFromStartToBed() {
@@ -39,6 +45,5 @@ public class PayCalculator {
 	public int calculatePayFromBedToEndBeforeMidnight() {
 		return (end - bed) * 8;
 	}
-
 
 }
