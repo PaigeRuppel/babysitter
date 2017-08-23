@@ -70,5 +70,10 @@ public class PayCalculatorTest {
 	public void shouldReturn6PmAsValidEndTime() {
 		assertThat(createTest(0, 0, 18).isValidEnd(), is(true));
 	}
+	
+	@Test
+	public void shouldReturn24DollarsFromStart6PmToBed8Pm() {
+		assertThat(createTest(18,20,0).calculatePayFromStartToBed(), is(24));
+	}
 
 }

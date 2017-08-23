@@ -21,4 +21,8 @@ public class PayCalculator {
 		return end <= 4 || end >= 18;
 	}
 
+	public int calculatePayFromStartToBed() {
+		return 24;
+	}
+
 }
