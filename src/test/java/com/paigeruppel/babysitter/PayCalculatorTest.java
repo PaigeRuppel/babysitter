@@ -105,5 +105,10 @@ public class PayCalculatorTest {
 	public void shouldReturn16DollarsFromMidnightToEnd1Am() {
 		assertThat(createTest(17,20,1).calculatePayFromMidnightToEnd(),is(16));
 	}
+	
+	@Test
+	public void shouldReturn32DollarsFromMidnightToEnd2Am() {
+		assertThat(createTest(17,20,2).calculatePayFromMidnightToEnd(),is(32));
+	}
 
 }

@@ -30,7 +30,7 @@ public class PayCalculator {
 	}
 
 	public int calculatePayFromMidnightToEnd() {
-		return 16;
+		return end * 16;
 	}
 
 }
