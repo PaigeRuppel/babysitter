@@ -12,13 +12,16 @@ public class PayCalculator {
 		this.end = end;
 	}
 
-	// assuming for now that no babysitter will start after 11 pm
+
 	public boolean isValidStart() {
 		return start >= 17 || start <= 3;
 	}
 
 	public boolean isValidEnd() {
 		return end <= 4 || end >= 18;
+	}
+	public int calculateTotalPay() {
+		return calculatePayFromStartToBed() + calculatePayFromBedToMidnight() + calculatePayFromMidnightToEnd();
 	}
 
 	public int calculatePayFromStartToBed() {
@@ -34,7 +37,8 @@ public class PayCalculator {
 	}
 
 	public int calculatePayFromBedToEndBeforeMidnight() {
-		return 24;
+		return (end - bed) * 8;
 	}
+
 
 }

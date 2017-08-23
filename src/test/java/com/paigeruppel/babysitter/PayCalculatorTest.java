@@ -33,7 +33,7 @@ public class PayCalculatorTest {
 
 	@Test
 	public void shouldReturn1AmAsValidStartTime() {
-		assertThat(createTest(1, 0 ,0 ).isValidStart(), is(true));
+		assertThat(createTest(1, 0, 0).isValidStart(), is(true));
 	}
 
 	@Test
@@ -70,55 +70,68 @@ public class PayCalculatorTest {
 	public void shouldReturn6PmAsValidEndTime() {
 		assertThat(createTest(0, 0, 18).isValidEnd(), is(true));
 	}
-	
+
 	// calculate pay from start to bed
 	@Test
 	public void shouldReturn24DollarsFromStart6PmToBed8Pm() {
-		assertThat(createTest(18,20,0).calculatePayFromStartToBed(), is(24));
+		assertThat(createTest(18, 20, 0).calculatePayFromStartToBed(), is(24));
 	}
-	
+
 	@Test
 	public void shouldReturn36DollarsFromStart5PmToBed8Pm() {
-		assertThat(createTest(17,20,0).calculatePayFromStartToBed(), is(36));
+		assertThat(createTest(17, 20, 0).calculatePayFromStartToBed(), is(36));
 	}
-	
+
 	@Test
 	public void shouldReturn48DollarsFromStart5PmToBed9Pm() {
 		assertThat(createTest(17, 21, 0).calculatePayFromStartToBed(), is(48));
 	}
-	
+
 	// calculate pay from bed to midnight
 	@Test
 	public void shouldReturn32DollarsFromBed8PmToMidnight() {
-		assertThat(createTest(17,20,0).calculatePayFromBedToMidnight(), is(32));
+		assertThat(createTest(17, 20, 0).calculatePayFromBedToMidnight(), is(32));
 	}
-	
+
 	@Test
 	public void shouldReturn40DollarsFromBed7PmToMidnight() {
-		assertThat(createTest(17,19,0).calculatePayFromBedToMidnight(), is(40));
+		assertThat(createTest(17, 19, 0).calculatePayFromBedToMidnight(), is(40));
 	}
-	
+
 	@Test
 	public void shouldReturn24DollarsFromBed9PmToMidnight() {
-		assertThat(createTest(17,21,0).calculatePayFromBedToMidnight(), is(24));
+		assertThat(createTest(17, 21, 0).calculatePayFromBedToMidnight(), is(24));
 	}
-	
+
 	// calculate pay from midnight to end (if end is after midnight)
 	@Test
 	public void shouldReturn16DollarsFromMidnightToEnd1Am() {
-		assertThat(createTest(17,20,1).calculatePayFromMidnightToEnd(),is(16));
+		assertThat(createTest(17, 20, 1).calculatePayFromMidnightToEnd(), is(16));
 	}
-	
+
 	@Test
 	public void shouldReturn32DollarsFromMidnightToEnd2Am() {
-		assertThat(createTest(17,20,2).calculatePayFromMidnightToEnd(),is(32));
+		assertThat(createTest(17, 20, 2).calculatePayFromMidnightToEnd(), is(32));
 	}
-	
-	
+
 	// calculate pay from bedtime to end if end is before midnight
 	@Test
 	public void shouldReturn24DollarsFromBed8PmToEndAt11Pm() {
-		assertThat(createTest(17, 20, 23).calculatePayFromBedToEndBeforeMidnight(), is (24));
+		assertThat(createTest(17, 20, 23).calculatePayFromBedToEndBeforeMidnight(), is(24));
 	}
 
+	@Test
+	public void shouldReturn32DollarsFromBed7PmToEndAt11Pm() {
+		assertThat(createTest(17, 19, 23).calculatePayFromBedToEndBeforeMidnight(), is(32));
+	}
+
+	@Test
+	public void shouldReturn88DollarsFromStart6PmBed8PmEnd2Am() {
+		assertThat(createTest(18, 20, 2).calculateTotalPay(), is(88));
+	}
+	
+	@Test
+	public void shouldReturn104DollarsFromStart6PmBed8PmEnd3Am() {
+		assertThat(createTest(18, 20, 3).calculateTotalPay(), is(104));
+	}
 }
