@@ -52,7 +52,13 @@ public class PayCalculatorTest {
 	@Test
 	public void shouldReturn11PmAsValidEndTime() {
 		PayCalculator underTest = new PayCalculator();
-		assertThat(underTest.isValidEnd(11), is(true));
+		assertThat(underTest.isValidEnd(23), is(true));
+	}
+	
+	@Test
+	public void shouldReturn6PmAsValidEndTime() {
+		PayCalculator underTest = new PayCalculator();
+		assertThat(underTest.isValidEnd(18), is(true));
 	}
 	
 

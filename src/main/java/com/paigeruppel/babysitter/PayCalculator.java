@@ -8,7 +8,7 @@ public class PayCalculator {
 	}
 
 	public boolean isValidEnd(int end) {
-		return end <= 4 || end == 11;
+		return end <= 4 || end >= 18;
 	}
 
 }
