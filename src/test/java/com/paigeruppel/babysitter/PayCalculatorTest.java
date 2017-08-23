@@ -25,4 +25,10 @@ public class PayCalculatorTest {
 		PayCalculator underTest = new PayCalculator();
 		assertThat(underTest.isValidStart(18), is(true));
 	}
+	
+	@Test
+	public void shouldReturn4AmAsValidEndTime() {
+		PayCalculator underTest = new PayCalculator();
+		assertThat(underTest.isValidEnd(4), is(true));
+	}
 }

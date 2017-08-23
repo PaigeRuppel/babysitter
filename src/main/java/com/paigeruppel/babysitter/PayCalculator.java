@@ -6,4 +6,8 @@ public class PayCalculator {
 		return start >= 17;
 	}
 
+	public boolean isValidEnd(int end) {
+		return true;
+	}
+
 }
