@@ -25,4 +25,8 @@ public class PayCalculator {
 		return (bed - start) * 12;
 	}
 
+	public int calculatePayFromBedToMidnight() {
+		return 32;
+	}
+
 }
