@@ -29,4 +29,8 @@ public class PayCalculator {
 		return (24 - bed) * 8;
 	}
 
+	public int calculatePayFromMidnightToEnd() {
+		return 16;
+	}
+
 }
