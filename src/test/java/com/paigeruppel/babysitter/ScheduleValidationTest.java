@@ -77,4 +77,14 @@ public class ScheduleValidationTest {
         assertTrue(underTest.isValidEnd(18));
     }
 
+    @Test
+    public void whenStartTime7PmIsAfterEndTime6PmShouldReturnNotValidSchedule() {
+        assertFalse(underTest.isValidSchedule(19, 18));
+    }
+
+    @Test
+    public void whenStartTime6PmIsBeforeEndTime7PmShouldReturnValidSchedule() {
+        assertTrue(underTest.isValidSchedule(18, 19));
+    }
+
 }

@@ -12,4 +12,8 @@ public class ScheduleValidation {
     public boolean isValidEnd(int end) {
         return end <= LATEST_END || end > EARLIEST_START;
     }
+
+    public boolean isValidSchedule(int start, int end) {
+        return start < end;
+    }
 }
