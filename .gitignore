@@ -4,6 +4,12 @@
 .settings/
 bin/
 
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
 # Gradle
 build/
 .gradle/

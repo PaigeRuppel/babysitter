@@ -5,6 +5,9 @@ public class PayCalculator {
 	private int start;
 	private int bed;
 	private int end;
+	private int totalPay;
+	private final int EARLIEST_START = 17;
+	private final int LATEST_END = 4;
 
 	public PayCalculator(int start, int bed, int end) {
 		this.start = start;
@@ -12,12 +15,10 @@ public class PayCalculator {
 		this.end = end;
 	}
 
-	public boolean isValidStart() {
-		return start >= 17 || start <= 3;
-	}
+
 
 	public boolean isValidEnd() {
-		return end <= 4 || end >= 18;
+		return end <= LATEST_END || end > EARLIEST_START;
 	}
 
 	public int calculateTotalPay() {
@@ -31,19 +32,23 @@ public class PayCalculator {
 	}
 
 	public int calculatePayFromStartToBed() {
-		return (bed - start) * 12;
+
+	    return (bed - start) * 12;
 	}
 
 	public int calculatePayFromBedToMidnight() {
-		return (24 - bed) * 8;
+
+	    return (24 - bed) * 8;
 	}
 
 	public int calculatePayFromMidnightToEnd() {
-		return end * 16;
+
+	    return end * 16;
 	}
 
 	public int calculatePayFromBedToEndBeforeMidnight() {
-		return (end - bed) * 8;
+
+	    return (end - bed) * 8;
 	}
 
 }
