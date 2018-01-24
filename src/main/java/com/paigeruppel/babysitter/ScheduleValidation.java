@@ -2,31 +2,37 @@ package com.paigeruppel.babysitter;
 
 public class ScheduleValidation {
 
+    private int startTime;
+    private int endTime;
     private final int EARLIEST_START = 17;
     private final int LATEST_END = 4;
-    private final int MIDNIGHT_UPPER = 24;
+    private final int MIDNIGHT_UPPER_BOUND = 24;
 
-    public boolean validate(int start, int end) {
-        return isValidStart(start) && isValidEnd(end) && isValidSchedule(start, end);
+    public ScheduleValidation(int startTime, int endTime) {
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
 
-
-    public boolean isValidStart(int start) {
-        return start >= EARLIEST_START || start < LATEST_END;
+    public boolean validate() {
+        return isValidStart() && isValidEnd() && isValidSchedule();
     }
 
-    public boolean isValidEnd(int end) {
-        return end <= LATEST_END || end > EARLIEST_START;
+    public boolean isValidStart() {
+        return startTime >= EARLIEST_START || startTime < LATEST_END;
     }
 
-    public boolean isValidSchedule(int start, int end) {
-        if (endIsBeforeMidnight(end)) {
-            return start < end;
+    public boolean isValidEnd() {
+        return endTime <= LATEST_END || endTime > EARLIEST_START;
+    }
+
+    public boolean isValidSchedule() {
+        if (endIsBeforeMidnight()) {
+            return startTime < endTime;
         }
-        return start > end;
+        return startTime > endTime;
     }
 
-    private boolean endIsBeforeMidnight(int end) {
-        return end < MIDNIGHT_UPPER && end > EARLIEST_START;
+    private boolean endIsBeforeMidnight() {
+        return endTime < MIDNIGHT_UPPER_BOUND && endTime > EARLIEST_START;
     }
 }
