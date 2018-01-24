@@ -27,17 +27,18 @@ public class ScheduleValidation {
     }
 
     private boolean isValidSchedule() {
-        if (!startIsPm() && !endIsPm() || startIsPm() && endIsPm()) {
+        if (startAndEndAreInSameTwelveHourPeriod()) {
             return startTime < endTime;
         }
         return startTime > endTime;
     }
 
-    private boolean startIsPm() {
-        return startTime < MIDNIGHT_UPPER_BOUND && startTime >= NOON;
+    private boolean startAndEndAreInSameTwelveHourPeriod() {
+        return isPm(startTime) && isPm(endTime) || !isPm(startTime) && !isPm(endTime);
     }
 
-    private boolean endIsPm() {
-        return endTime < MIDNIGHT_UPPER_BOUND && endTime >= NOON;
+    private boolean isPm(int time) {
+        return time < MIDNIGHT_UPPER_BOUND && time >= NOON;
     }
+
 }
