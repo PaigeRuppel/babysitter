@@ -18,8 +18,8 @@ public class ScheduleValidationTest {
     }
 
     @Test
-    public void shouldReturn5PmAsValidStartTime() {
-        assertTrue(underTest.isValidStart(17));
+    public void shouldReturn5PmAnd6PmAsValidSchedule() {
+        assertTrue(underTest.validate(17, 18));
     }
 
     @Test
