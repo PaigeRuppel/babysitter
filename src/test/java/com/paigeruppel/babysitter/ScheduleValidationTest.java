@@ -9,10 +9,8 @@ import static org.junit.Assert.assertTrue;
 
 public class ScheduleValidationTest {
 
-    private ScheduleValidation underTest;
-
     public ScheduleValidation testSchedule(int startTime, int endTime) {
-        return underTest = new ScheduleValidation(startTime, endTime);
+        return new ScheduleValidation(startTime, endTime);
     }
 
     @Test

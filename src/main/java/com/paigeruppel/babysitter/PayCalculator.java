@@ -17,8 +17,13 @@ public class PayCalculator {
 	}
 
 	public int getTotalPay() {
+	    clearTotalPay();
 	    calculateTotalPay();
 	    return totalPay;
+    }
+
+    private void clearTotalPay() {
+	    totalPay = 0;
     }
 
 	public void calculateTotalPay() {

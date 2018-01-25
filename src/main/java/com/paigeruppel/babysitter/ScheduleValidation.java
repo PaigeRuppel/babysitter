@@ -30,7 +30,7 @@ public class ScheduleValidation {
         if (startAndEndAreInSameTwelveHourPeriod()) {
             return startTime < endTime;
         }
-        return startTime > endTime;
+        return isPm(startTime) && startTime > endTime;
     }
 
     private boolean startAndEndAreInSameTwelveHourPeriod() {
@@ -38,7 +38,7 @@ public class ScheduleValidation {
     }
 
     private boolean isPm(int time) {
-        return time < MIDNIGHT_UPPER_BOUND && time >= NOON;
+        return time >= NOON && time < MIDNIGHT_UPPER_BOUND;
     }
 
 }
