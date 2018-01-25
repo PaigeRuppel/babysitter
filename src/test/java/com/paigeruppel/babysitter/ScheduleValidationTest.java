@@ -1,6 +1,5 @@
 package com.paigeruppel.babysitter;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;
@@ -18,82 +17,68 @@ public class ScheduleValidationTest {
 
     @Test
     public void whenStartTimeIs5PmAndEndTimeIs6PmIsValidSchedule() {
-        assertTrue(testSchedule(17,18).validate());
+        assertTrue(testSchedule(17,18).isValidSchedule());
     }
 
     @Test
     public void whenStartTimeIs4PmAndBeforeEarliestStartIsNotValidSchedule() {
-        assertFalse(testSchedule(16,17).validate());
+        assertFalse(testSchedule(16,17).isValidSchedule());
     }
 
     @Test
     public void whenStartTimeIs6PmAndEndTimeIs10PmIsValidSchedule() {
-        assertTrue(testSchedule(18, 22).validate());
+        assertTrue(testSchedule(18, 22).isValidSchedule());
     }
 
     @Test
     public void whenStartTimeIs10PmAndEndTimeIsMidnightIsValidSchedule() {
-        assertTrue(testSchedule(22, 0).validate());
+        assertTrue(testSchedule(22, 0).isValidSchedule());
     }
 
     @Test
     public void whenStartTimeIs10PmAndEndTimeIs1AmIsValidSchedule() {
-        assertTrue(testSchedule(22, 1).validate());
+        assertTrue(testSchedule(22, 1).isValidSchedule());
     }
 
     @Test
     public void whenStartTimeIsMidnightAndEndTimeIs1AmIsValidSchedule() {
-        assertTrue(testSchedule(0, 1).validate());
+        assertTrue(testSchedule(0, 1).isValidSchedule());
     }
 
     @Test
     public void whenStartTimeIs1AmAndEndTimeIs11PmIsNotValidSchedule() {
-        assertFalse(testSchedule(1, 23).validate());
+        assertFalse(testSchedule(1, 23).isValidSchedule());
     }
 
     @Test
     public void whenStartTimeIs10PmAndEndTimeIs4AmIsValidSchedule() {
-        assertTrue(testSchedule(22, 4).validate());
+        assertTrue(testSchedule(22, 4).isValidSchedule());
     }
 
-//    @Test
-//    public void shouldReturn5AmAsNotValidEndTime() {
-//        assertFalse(underTest.isValidEnd(5));
-//    }
-//
-//    @Test
-//    public void shouldReturn3AmAsValidEndTime() {
-//        assertTrue(underTest.isValidEnd(3));
-//    }
-//
-//    @Test
-//    public void shouldReturnMidnightAsValidEndTime() {
-//        assertTrue(underTest.isValidEnd(0));
-//    }
-//
-//    @Test
-//    public void shouldReturn11PmAsValidEndTime() {
-//        assertTrue(underTest.isValidEnd(23));
-//    }
-//
-//    @Test
-//    public void shouldReturn6PmAsValidEndTime() {
-//        assertTrue(underTest.isValidEnd(18));
-//    }
-//
-//    @Test
-//    public void whenStartTime7PmIsAfterEndTime6PmShouldReturnNotValidSchedule() {
-//        assertFalse(underTest.isValidSchedule(19, 18));
-//    }
-//
-//    @Test
-//    public void whenStartTime6PmIsBeforeEndTime7PmShouldReturnValidSchedule() {
-//        assertTrue(underTest.isValidSchedule(18, 19));
-//    }
-//
-//    @Test
-//    public void whenStartTime6PmIsBeforeEndTimeMidnightShouldReturnValidSchedule() {
-//        assertTrue(underTest.isValidSchedule(18, 0));
-//    }
+    @Test
+    public void whenStartTimeIsMidnightAndEndTimeIs5AmAfterLatestEndIsNotValidSchedule() {
+        assertFalse(testSchedule(0, 5).isValidSchedule());
+    }
+
+    @Test
+    public void whenStartTimeIs6PmAndEndTimeIs3AmIsValidSchedule() {
+        assertTrue(testSchedule(18, 3).isValidSchedule());
+    }
+
+    @Test
+    public void whenStartIs8PmAndEndIsMidnightIsValidSchedule() {
+        assertTrue(testSchedule(20,0).isValidSchedule());
+    }
+
+    @Test
+    public void whenStartTimeIs2AmAndEndTimeIs11PmIsNotValidSchedule() {
+        assertFalse(testSchedule(2, 23).isValidSchedule());
+    }
+
+    @Test
+    public void whenStartTimeIs8PmAndEndTimeIs11PmIsValidSchedule() {
+        assertTrue(testSchedule(20, 23).isValidSchedule());
+    }
+
 
 }

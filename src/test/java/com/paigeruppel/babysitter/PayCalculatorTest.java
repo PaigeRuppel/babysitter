@@ -7,8 +7,10 @@ import org.junit.Test;
 
 public class PayCalculatorTest {
 
+	private PayCalculator underTest;
+
 	public PayCalculator createTest(int start, int bed, int end) {
-		return new PayCalculator(start, bed, end);
+		return underTest = new PayCalculator(start, bed, end);
 	}
 
 
@@ -68,16 +70,22 @@ public class PayCalculatorTest {
 
 	@Test
 	public void shouldReturn88DollarsFromStart6PmBed8PmEnd2Am() {
-		assertThat(createTest(18, 20, 2).calculateTotalPay(), is(88));
+		createTest(18,20,2);
+		underTest.calculateTotalPay();
+		assertThat(underTest.getTotalPay(), is(88));
 	}
 	
 	@Test
 	public void shouldReturn104DollarsFromStart6PmBed8PmEnd3Am() {
-		assertThat(createTest(18, 20, 3).calculateTotalPay(), is(104));
+		createTest(18,20,3);
+		underTest.calculateTotalPay();
+		assertThat(underTest.getTotalPay(), is(104));
 	}
 	
 	@Test
 	public void shouldReturn30DollarsFromStart6PmBed8PmEnd10Pm() {
-		assertThat(createTest(18, 20, 22).calculateTotalPay(), is(40));
+		createTest(18,20,22);
+		underTest.calculateTotalPay();
+		assertThat(underTest.getTotalPay(), is(40));
 	}
 }

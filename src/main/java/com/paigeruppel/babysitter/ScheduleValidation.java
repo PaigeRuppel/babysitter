@@ -14,8 +14,8 @@ public class ScheduleValidation {
         this.endTime = endTime;
     }
 
-    public boolean validate() {
-        return isValidStart() && isValidEnd() && isValidSchedule();
+    public boolean isValidSchedule() {
+        return isValidStart() && isValidEnd() && isValidStartAndEndCombination();
     }
 
     private boolean isValidStart() {
@@ -26,7 +26,7 @@ public class ScheduleValidation {
         return endTime <= LATEST_END || endTime > EARLIEST_START;
     }
 
-    private boolean isValidSchedule() {
+    private boolean isValidStartAndEndCombination() {
         if (startAndEndAreInSameTwelveHourPeriod()) {
             return startTime < endTime;
         }

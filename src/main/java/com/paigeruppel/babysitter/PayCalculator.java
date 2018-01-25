@@ -6,8 +6,9 @@ public class PayCalculator {
 	private int bed;
 	private int end;
 	private int totalPay;
-	private final int EARLIEST_START = 17;
-	private final int LATEST_END = 4;
+	private final int START_TO_BED_RATE = 12;
+	private final int BED_TO_MIDNIGHT_RATE = 8;
+	private final int AFTER_MIDNIGHT_RATE = 16;
 
 	public PayCalculator(int start, int bed, int end) {
 		this.start = start;
@@ -15,30 +16,33 @@ public class PayCalculator {
 		this.end = end;
 	}
 
-	public int calculateTotalPay() {
-		int totalPay = 0;
+	public int getTotalPay() {
+	    calculateTotalPay();
+	    return totalPay;
+    }
+
+	public void calculateTotalPay() {
 		if (end < 4) {
 			totalPay = calculatePayFromStartToBed() + calculatePayFromBedToMidnight() + calculatePayFromMidnightToEnd();
 		} else {
 			totalPay = calculatePayFromStartToBed() + calculatePayFromBedToEndBeforeMidnight();
 		}
-		return totalPay;
 	}
 
 	public int calculatePayFromStartToBed() {
-	    return (bed - start) * 12;
+	    return (bed - start) * START_TO_BED_RATE;
 	}
 
 	public int calculatePayFromBedToMidnight() {
-	    return (24 - bed) * 8;
+	    return (24 - bed) * BED_TO_MIDNIGHT_RATE;
 	}
 
 	public int calculatePayFromMidnightToEnd() {
-	    return end * 16;
+	    return end * AFTER_MIDNIGHT_RATE;
 	}
 
 	public int calculatePayFromBedToEndBeforeMidnight() {
-	    return (end - bed) * 8;
+	    return (end - bed) * BED_TO_MIDNIGHT_RATE;
 	}
 
 }
